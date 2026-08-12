@@ -1,4 +1,4 @@
-# Buffet Karla Cintia
+# Buffet Karla Rios
 
 Landing page de captação (HTML/CSS/JS) para orçamentos via WhatsApp.
 

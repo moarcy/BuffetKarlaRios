@@ -4,7 +4,7 @@ const config = window.BUFFET_CONFIG || {};
 const number = String(config.WHATSAPP_NUMBER || "").replace(/\D/g, "");
 const message = encodeURIComponent(
   config.WHATSAPP_MESSAGE ||
-    "Olá! Gostaria de solicitar um orçamento com o Buffet Karla Cintia."
+    "Olá! Gostaria de solicitar um orçamento com o Buffet Karla Rios."
 );
 const waUrl = number ? `https://wa.me/${number}?text=${message}` : "#contato";
 

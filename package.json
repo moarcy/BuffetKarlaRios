@@ -1,7 +1,7 @@
 {
   "name": "buffetkarlarios",
   "version": "1.0.0",
-  "description": "Landing page de captação — Buffet Karla Cintia (Miguel Calmon/BA)",
+  "description": "Landing page de captação — Buffet Karla Rios (Miguel Calmon/BA)",
   "private": true,
   "scripts": {
     "optimize": "node optimize-images.mjs",
