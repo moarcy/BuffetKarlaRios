@@ -500,6 +500,16 @@ a {
   font-style: italic;
 }
 
+.testimonial__author {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* Final CTA */
 
 .cta-final {
