@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.vercel/
+
+# originais e intermediários (site usa images/)
+originais-celular/
+processadas/
+Sheyla e Pedro-*.jpg

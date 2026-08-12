@@ -1,0 +1,13 @@
+{
+  "name": "buffetkarlarios",
+  "version": "1.0.0",
+  "description": "Landing page de captação — Buffet Karla Cintia (Miguel Calmon/BA)",
+  "private": true,
+  "scripts": {
+    "optimize": "node optimize-images.mjs",
+    "start": "npx --yes serve . -p 4173"
+  },
+  "dependencies": {
+    "sharp": "^0.35.3"
+  }
+}
