@@ -45,7 +45,7 @@
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=8" />
 
     <script type="application/ld+json">
       {
@@ -75,15 +75,18 @@
           <span class="site-logo__script">Karla Rios</span>
           <span class="site-logo__tag">Buffet</span>
         </a>
-        <a
-          class="btn btn--header whatsapp-link"
-          href="#"
-          data-whatsapp
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Orçamento WhatsApp
-        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a class="site-nav__link" href="pedido.html">Fazer pedido</a>
+          <a
+            class="btn btn--header whatsapp-link"
+            href="#"
+            data-whatsapp
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </nav>
       </div>
     </header>
 
@@ -390,15 +393,20 @@
             Conte-nos a data, o local e o tipo de celebração. Montamos um
             orçamento com carinho para Miguel Calmon e região.
           </p>
-          <a
-            class="btn btn--primary btn--large whatsapp-link"
-            href="#"
-            data-whatsapp
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Fazer Orçamento pelo WhatsApp
-          </a>
+          <div class="cta-final__actions">
+            <a class="btn btn--primary btn--large" href="pedido.html">
+              Fazer pedido pelo site
+            </a>
+            <a
+              class="btn btn--ghost btn--large whatsapp-link"
+              href="#"
+              data-whatsapp
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ou pelo WhatsApp
+            </a>
+          </div>
           <ul class="contact-meta">
             <li>
               <span>WhatsApp</span>
@@ -439,14 +447,16 @@
         <div class="site-footer__brand">
           <p class="site-logo__script">Karla Rios</p>
           <p>Buffet · Miguel Calmon — BA</p>
-          <p>Há mais de 10 anos na região</p>
+          <p class="site-footer__extra">Há mais de 10 anos na região</p>
         </div>
         <nav class="site-footer__nav" aria-label="Rodapé">
+          <a href="pedido.html">Fazer pedido</a>
           <a href="#sobre">Sobre</a>
           <a href="#servicos">Serviços</a>
           <a href="#diferenciais">Diferenciais</a>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#contato">Contato</a>
+          <a href="admin.html">Área da casa</a>
         </nav>
         <div class="site-footer__social">
           <a
@@ -466,9 +476,18 @@
           >
         </div>
         <p class="site-footer__copy">
-          © <span id="year"></span> Buffet Karla Rios. Miguel Calmon e Região —
-          BA.
+          © <span id="year"></span><span class="site-footer__copy-rest"> Buffet Karla Rios. Miguel Calmon e Região — BA.</span>
         </p>
+      </div>
+      <div class="site-footer__mini">
+        <p class="site-footer__mini-links">
+          <a class="site-footer__mini-name" href="#topo">Karla Rios</a>
+          <span aria-hidden="true">|</span>
+          <a href="#contato">Contato</a>
+          <span aria-hidden="true">|</span>
+          <a href="admin.html">Admin</a>
+        </p>
+        <p class="site-footer__mini-copy">© <span data-year></span></p>
       </div>
     </footer>
 

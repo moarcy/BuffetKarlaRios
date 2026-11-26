@@ -4,9 +4,14 @@ Thumbs.db
 *.log
 .vercel/
 
+# pedidos e senha da área interna
+data/
+config.server.js
+
 # originais e intermediários (site usa images/)
 originais-celular/
 processadas/
 Sheyla e Pedro-*.jpg
 
 .vercel
+.env*

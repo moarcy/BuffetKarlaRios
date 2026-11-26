@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fazer pedido | Buffet Karla Rios</title>
+    <meta
+      name="description"
+      content="Faça seu pedido para o Buffet Karla Rios em Miguel Calmon e consulte os pedidos feitos com o seu telefone."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=8" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="site-header" id="topo">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html" aria-label="Buffet Karla Rios — início">
+          <span class="site-logo__script">Karla Rios</span>
+          <span class="site-logo__tag">Buffet</span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a class="site-nav__link" id="nav-pedido" href="#pedido" aria-current="page">Fazer pedido</a>
+          <span class="site-nav__sep" aria-hidden="true">|</span>
+          <a class="site-nav__link" id="nav-meus" href="#pedidos">Meus pedidos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <div class="page-intro" id="pedido">
+        <h1 class="section__title section__title--script">Monte o cardápio</h1>
+        <p class="section__subtitle">
+          Reserve sua encomenda e celebre sem se preocupar com a cozinha.
+        </p>
+        <p class="page-intro__place">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+            />
+          </svg>
+          <span>Rua Paulo Gonçalves, 196</span>
+        </p>
+      </div>
+
+      <section class="section order-section" aria-label="Pedido">
+        <form id="form-pedido" class="order-layout" novalidate>
+          <div id="passo-cardapio">
+            <p class="menu-note">Serve 10 pessoas.</p>
+            <div id="cardapio"></div>
+            <div class="guests">
+              <label for="pessoas">Para quantas pessoas?</label>
+              <input id="pessoas" name="pessoas" type="number" min="1" max="5000" inputmode="numeric" />
+            </div>
+            <div class="order-bar">
+              <p class="order-total" id="order-total">
+                <span>Total</span>
+                <span id="order-total-valor">R$ 0,00</span>
+              </p>
+              <button class="btn btn--primary" id="continuar" type="button">Continuar</button>
+              <p id="cardapio-status" class="form-status" role="status"></p>
+            </div>
+          </div>
+
+          <div id="passo-cadastro" hidden>
+            <h2 class="panel__title">Seus dados</h2>
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" maxlength="80" />
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone</label>
+              <input
+                id="telefone"
+                name="telefone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="(74) 99999-9999"
+              />
+            </div>
+            <div class="field">
+              <label for="dataEvento">Data da retirada</label>
+              <input id="dataEvento" name="dataEvento" type="date" />
+            </div>
+            <div class="field">
+              <label for="observacoes">Observação</label>
+              <input id="observacoes" name="observacoes" type="text" maxlength="800" />
+            </div>
+            <div id="resumo"></div>
+            <div class="form-actions">
+              <button class="btn" id="voltar" type="button">Voltar</button>
+              <button class="btn btn--primary" type="submit">Enviar pedido</button>
+            </div>
+            <p id="pedido-status" class="form-status" role="status"></p>
+          </div>
+        </form>
+
+        <div id="passo-consulta" class="order-layout" hidden>
+          <div id="consulta-busca">
+            <h2 class="panel__title">Meus pedidos</h2>
+            <form id="form-consulta">
+              <div class="field">
+                <label for="consulta-telefone">Telefone</label>
+                <input id="consulta-telefone" type="tel" inputmode="tel" placeholder="(74) 99999-9999" required />
+              </div>
+              <div class="form-actions">
+                <button class="btn" id="fechar-consulta" type="button">Voltar</button>
+                <button class="btn btn--primary" type="submit">Ver</button>
+              </div>
+              <p id="consulta-status" class="form-status" role="status"></p>
+            </form>
+          </div>
+          <div id="consulta-perfil" hidden>
+            <div class="perfil">
+              <p class="perfil__ola">Olá, <span id="perfil-nome"></span></p>
+              <button class="perfil__sair" id="sair-perfil" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 7V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-2M15 12H3m0 0 3-3m-3 3 3 3"
+                  />
+                </svg>
+                Sair
+              </button>
+            </div>
+            <div id="meus-pedidos"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <p class="site-logo__script">Karla Rios</p>
+          <p>Buffet · Miguel Calmon — BA</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Rodapé">
+          <a href="index.html">Início</a>
+          <a href="pedido.html">Fazer pedido</a>
+          <a href="admin.html">Área da casa</a>
+        </nav>
+        <p class="site-footer__copy">
+          © <span id="year"></span><span class="site-footer__copy-rest"> Buffet Karla Rios. Miguel Calmon e Região — BA.</span>
+        </p>
+      </div>
+      <div class="site-footer__mini">
+        <p class="site-footer__mini-links">
+          <a class="site-footer__mini-name" href="index.html">Karla Rios</a>
+          <span aria-hidden="true">|</span>
+          <a href="index.html#contato">Contato</a>
+          <span aria-hidden="true">|</span>
+          <a href="admin.html">Admin</a>
+        </p>
+        <p class="site-footer__mini-copy">© <span data-year></span></p>
+      </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="cardapio.js"></script>
+    <script type="module" src="script.js"></script>
+    <script src="pedido.js?v=5"></script>
+  </body>
+</html>

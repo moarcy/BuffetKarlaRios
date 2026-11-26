@@ -26,8 +26,10 @@ const igHandle = config.INSTAGRAM_HANDLE || "@karla.cintia.almeida";
   if (id === "instagram-link") link.textContent = igHandle;
 });
 
-const year = document.getElementById("year");
-if (year) year.textContent = String(new Date().getFullYear());
+const yearText = String(new Date().getFullYear());
+document.querySelectorAll("[data-year], #year").forEach((el) => {
+  el.textContent = yearText;
+});
 
 const header = document.querySelector(".site-header");
 const onScrollHeader = () => {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pedidos | Buffet Karla Rios</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=8" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="site-header" id="topo">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html" aria-label="Buffet Karla Rios — início">
+          <span class="site-logo__script">Karla Rios</span>
+          <span class="site-logo__tag">Buffet</span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a class="site-nav__link" href="pedido.html">Fazer pedido</a>
+          <a class="site-nav__link" href="admin.html" aria-current="page">Pedidos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <div class="page-intro motion-reveal">
+        <p class="eyebrow">Casa</p>
+        <h1 class="section__title section__title--script">Pedidos</h1>
+        <p class="section__subtitle">
+          Tudo o que chegou pelo site, do mais recente ao mais antigo.
+        </p>
+      </div>
+
+      <section class="section order-section">
+        <div id="gate" class="admin-gate motion-reveal">
+          <form id="form-senha">
+            <div class="field">
+              <label for="senha">Senha da casa</label>
+              <input id="senha" type="password" autocomplete="current-password" required />
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary" type="submit">Entrar</button>
+            </div>
+            <p id="senha-status" class="form-status" role="status"></p>
+          </form>
+        </div>
+
+        <div id="painel" class="admin-list" hidden>
+          <div class="admin-bar">
+            <p id="admin-resumo" class="panel__lead" style="margin: 0"></p>
+            <button class="btn btn--header" id="sair" type="button">Sair</button>
+          </div>
+          <div id="lista-pedidos"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <p class="site-logo__script">Karla Rios</p>
+          <p>Buffet · Miguel Calmon — BA</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Rodapé">
+          <a href="index.html">Início</a>
+          <a href="pedido.html">Fazer pedido</a>
+          <a href="admin.html">Área da casa</a>
+        </nav>
+        <p class="site-footer__copy">
+          © <span id="year"></span><span class="site-footer__copy-rest"> Buffet Karla Rios. Miguel Calmon e Região — BA.</span>
+        </p>
+      </div>
+      <div class="site-footer__mini">
+        <p class="site-footer__mini-links">
+          <a class="site-footer__mini-name" href="index.html">Karla Rios</a>
+          <span aria-hidden="true">|</span>
+          <a href="index.html#contato">Contato</a>
+          <span aria-hidden="true">|</span>
+          <a href="admin.html">Admin</a>
+        </p>
+        <p class="site-footer__mini-copy">© <span data-year></span></p>
+      </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script type="module" src="script.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
