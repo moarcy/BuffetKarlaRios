@@ -3,12 +3,10 @@ const statusPedido = document.getElementById("pedido-status");
 const statusConsulta = document.getElementById("consulta-status");
 const lista = document.getElementById("meus-pedidos");
 const cardapio = window.BUFFET_CARDAPIO;
-const totalEl = document.getElementById("order-total-valor");
 const pessoasInput = document.getElementById("pessoas");
 const passoCardapio = document.getElementById("passo-cardapio");
 const passoCadastro = document.getElementById("passo-cadastro");
 const passoConsulta = document.getElementById("passo-consulta");
-const BASE = 10;
 
 function setStatus(el, message, kind) {
   el.textContent = message;
@@ -58,16 +56,6 @@ function pessoasInformadas() {
   const pessoas = Number(pessoasInput.value);
   if (!Number.isInteger(pessoas) || pessoas < 1) return 0;
   return pessoas;
-}
-
-function calcularTotal(itens, pessoas) {
-  const soma = itens.reduce((acc, item) => acc + item.preco, 0);
-  if (!pessoas) return 0;
-  return Math.round((soma * pessoas * 100) / BASE) / 100;
-}
-
-function atualizarTotal() {
-  totalEl.textContent = dinheiro(calcularTotal(itensSelecionados(), pessoasInformadas()));
 }
 
 function marcarNav(passo) {
@@ -120,7 +108,6 @@ function montarCardapio() {
       marca.type = "checkbox";
       marca.dataset.item = item.id;
       marca.setAttribute("aria-label", item.nome);
-      marca.addEventListener("change", atualizarTotal);
       const trilho = document.createElement("span");
       trilho.className = "switch__track";
       trilho.setAttribute("aria-hidden", "true");
@@ -132,7 +119,7 @@ function montarCardapio() {
   });
 }
 
-function preencherResumo(itens, pessoas, total) {
+function preencherResumo(itens, pessoas) {
   const resumo = document.getElementById("resumo");
   resumo.replaceChildren();
   const pratos = document.createElement("p");
@@ -141,7 +128,7 @@ function preencherResumo(itens, pessoas, total) {
   const conta = document.createElement("p");
   conta.className = "resumo-pedido";
   const forte = document.createElement("strong");
-  forte.textContent = `${pessoas} pessoas · ${dinheiro(total)}`;
+  forte.textContent = `${pessoas} pessoas · valor a confirmar`;
   conta.append(forte);
   resumo.append(pratos, conta);
 }
@@ -184,7 +171,9 @@ function renderPedidos(pedidos) {
     pratos.textContent = itens.map((item) => item.nome).join(", ");
 
     const total = document.createElement("p");
-    total.textContent = `${pedido.pessoas} pessoas · ${dinheiro(pedido.total)}`;
+    total.textContent = pedido.total
+      ? `${pedido.pessoas} pessoas · ${dinheiro(pedido.total)}`
+      : `${pedido.pessoas} pessoas · valor a confirmar`;
 
     const meta = document.createElement("p");
     meta.textContent = formatarQuando(pedido.criadoEm);
@@ -195,8 +184,6 @@ function renderPedidos(pedidos) {
 }
 
 montarCardapio();
-pessoasInput.addEventListener("input", atualizarTotal);
-atualizarTotal();
 
 document.getElementById("continuar").addEventListener("click", () => {
   const itens = itensSelecionados();
@@ -210,7 +197,7 @@ document.getElementById("continuar").addEventListener("click", () => {
     return;
   }
   setStatus(statusCardapio, "", "ok");
-  preencherResumo(itens, pessoas, calcularTotal(itens, pessoas));
+  preencherResumo(itens, pessoas);
   mostrar("cadastro");
 });
 
@@ -249,7 +236,6 @@ document.getElementById("form-pedido").addEventListener("submit", async (event) 
     }
     setStatus(statusPedido, `Pedido nº ${body.pedido.id} guardado.`, "ok");
     form.reset();
-    atualizarTotal();
     document.getElementById("resumo").replaceChildren();
     document.getElementById("consulta-telefone").value = body.pedido.telefone;
     mostrar("consulta");

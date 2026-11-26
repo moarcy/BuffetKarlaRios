@@ -62,13 +62,20 @@ function render(pedidos) {
 
     const pratos = document.createElement("p");
     const itens = Array.isArray(pedido.itens) ? pedido.itens : [];
-    pratos.textContent = itens.map((item) => item.nome).join(", ");
+    pratos.textContent = itens
+      .map((item) => {
+        const preco = Number(item.preco || 0).toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        return item.preco ? `${item.nome} (${preco})` : item.nome;
+      })
+      .join(", ");
 
     const total = document.createElement("p");
-    total.textContent = Number(pedido.total || 0).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    total.textContent = pedido.total
+      ? Number(pedido.total).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+      : "Valor a confirmar";
 
     const fone = document.createElement("p");
     const link = document.createElement("a");

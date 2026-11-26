@@ -53,17 +53,13 @@
       <section class="section order-section" aria-label="Pedido">
         <form id="form-pedido" class="order-layout" novalidate>
           <div id="passo-cardapio">
-            <p class="menu-note">Serve 10 pessoas.</p>
             <div id="cardapio"></div>
             <div class="guests">
               <label for="pessoas">Para quantas pessoas?</label>
               <input id="pessoas" name="pessoas" type="number" min="1" max="5000" inputmode="numeric" />
+              <p class="order-hint">O valor é confirmado depois.</p>
             </div>
             <div class="order-bar">
-              <p class="order-total" id="order-total">
-                <span>Total</span>
-                <span id="order-total-valor">R$ 0,00</span>
-              </p>
               <button class="btn btn--primary" id="continuar" type="button">Continuar</button>
               <p id="cardapio-status" class="form-status" role="status"></p>
             </div>
@@ -171,6 +167,6 @@
     <script src="config.js"></script>
     <script src="cardapio.js"></script>
     <script type="module" src="script.js"></script>
-    <script src="pedido.js?v=5"></script>
+    <script src="pedido.js?v=6"></script>
   </body>
 </html>
