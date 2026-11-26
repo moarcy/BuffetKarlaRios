@@ -33,7 +33,8 @@ function send(res, status, body, headers = {}) {
 
 function safeFile(urlPath) {
   const decoded = decodeURIComponent(urlPath.split("?")[0]);
-  const rel = decoded === "/" ? "index.html" : decoded.replace(/^\/+/, "");
+  let rel = decoded === "/" ? "index.html" : decoded.replace(/^\/+/, "");
+  if (rel && !path.extname(rel)) rel = `${rel}.html`;
   if (!rel || rel.includes("\0") || rel.split("/").includes("..")) return null;
   if (rel.startsWith(".") || rel.includes("/.")) return null;
   const blocked = ["data", "node_modules", "lib", "config.server.js", "server.js"];
@@ -76,6 +77,12 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
   if (url.pathname.startsWith("/api/")) {
     await handle(req, res, url);
+    return;
+  }
+  if (url.pathname.endsWith(".html")) {
+    const clean = url.pathname === "/index.html" ? "/" : url.pathname.slice(0, -5);
+    res.writeHead(308, { Location: clean + url.search });
+    res.end();
     return;
   }
   serveStatic(req, res, url);
